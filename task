@@ -1,0 +1,4 @@
+
+create subproject:
+	create zip from build director in parent prject 
+	with comp hostname and data as an archive name
