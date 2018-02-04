@@ -38,10 +38,6 @@ dependencies {
 	testImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
 
-task zip_build(type: Zip, dependsOn: build) {
-	from 'build'
-}
-
 def getDate() {
     def date = new Date()
     def formattedDate = date.format('yyyy-MM-dd')
@@ -54,7 +50,8 @@ def getHost() {
 	return hostName
 }
 
-task zip_test(type: Zip) {
+task zip_test(type: Zip ) {
+	mustRunAfter 'build'
 	from 'test'
 	baseName = 'build'
 	appendix = getDate()
