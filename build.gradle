@@ -46,15 +46,14 @@ def getDate() {
 
 def getHost() {
 	def inetAddr = new InetAddress()
-	def hostName = inetAddr.getHostName()
+	def hostName = inetAddr.getLocalHost().getCanonicalHostName()
 	return hostName
 }
 
 task (zip_build, type: Zip) {
 	mustRunAfter 'build'
-	from 'test'
-	baseName = 'build'
-	// baseName = getHost() <-- exception
+	from '../build'
+	baseName = getHost()
 	appendix = getDate()
 	extension = 'zip'
 	destinationDir = project.projectDir
