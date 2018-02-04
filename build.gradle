@@ -50,8 +50,7 @@ def getHost() {
 	return hostName
 }
 
-task (zip_build, type: Zip ) {
-	dependsOn 'build'
+task (zip_build, type: Zip) {
 	mustRunAfter 'build'
 	from 'test'
 	baseName = 'build'
@@ -60,4 +59,4 @@ task (zip_build, type: Zip ) {
 	destinationDir = project.projectDir
 }
 
-build.finalizedBy zip_build
+build.finalizedBy ":zip_build:zip_build"

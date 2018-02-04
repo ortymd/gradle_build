@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+task (zip_build, type: Zip ) {
+	mustRunAfter 'build'
+	from '../test'
+	baseName = 'build'
+	appendix = getDate()
+	extension = 'zip'
+	destinationDir = project.projectDir
+}
