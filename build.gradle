@@ -50,11 +50,7 @@ def getHost() {
 	return hostName
 }
 
-tasks.build.doLast{
-	tasks.zip_test
-}
-
-task (zip_test, type: Zip ) {
+task (zip_build, type: Zip ) {
 	dependsOn 'build'
 	mustRunAfter 'build'
 	from 'test'
@@ -63,3 +59,5 @@ task (zip_test, type: Zip ) {
 	extension = 'zip'
 	destinationDir = project.projectDir
 }
+
+build.finalizedBy zip_build
