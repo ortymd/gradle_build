@@ -43,8 +43,16 @@ dependencies {
 task zip_build(type: Zip, dependsOn: build) {
 	from 'build'
 }
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
+}
+
 task zip_test(type: Zip) {
 	from 'test'
 	into 'test.zip'
-	destinationDir = project.buildDir
+	//basename = 'hostname'
+	appendix = getDate()
+	destinationDir = project.projectDir
 }
