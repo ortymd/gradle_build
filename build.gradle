@@ -50,6 +50,7 @@ def getHost() {
 	return hostName
 }
 
+
 task (zip_build, type: Zip) {
 	mustRunAfter 'build'
 	from '../build'

@@ -12,5 +12,5 @@ task (zip_build, type: Zip ) {
 	baseName = getHost()
 	appendix = getDate()
 	extension = 'zip'
-	destinationDir = project.projectDir
+	destinationDir = parent.projectDir
 }
